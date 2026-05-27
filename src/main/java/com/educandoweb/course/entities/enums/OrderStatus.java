@@ -1,7 +1,5 @@
 package com.educandoweb.course.entities.enums;
 
-import org.hibernate.boot.model.naming.IllegalIdentifierException;
-
 public enum OrderStatus {
 	WAITING_PAYMENT(1),
 	PAID(2),

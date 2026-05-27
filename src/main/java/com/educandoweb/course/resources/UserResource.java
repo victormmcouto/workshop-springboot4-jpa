@@ -22,19 +22,19 @@ granting the interface access to the data. (REST CONTROLLER)
 public class UserResource {
 	
 	@Autowired
-	private UserService userService;
+	private UserService service;
 	
 	//ending point
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		 List<User> list = userService.findAll();
+		 List<User> list = service.findAll();
 		 
 		 return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User user = userService.findById(id);
+		User user = service.findById(id);
 		return ResponseEntity.ok().body(user);
 	}
 }
