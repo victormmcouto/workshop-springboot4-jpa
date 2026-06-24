@@ -20,7 +20,7 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		Optional<User> user = repository	.findById(id);
+		Optional<User> user = repository.findById(id);
 		return user.get();
 	}
 	
@@ -30,5 +30,21 @@ public class UserService {
 	
 	public void delete(long id) {
 		repository.deleteById(id);
+	}
+	
+	public User update(Long id, User user) {
+		/*
+		 * Tras um objeto monitorado, diretente de findById que procura o
+		 * registro no BD.	
+		*/
+		User entity = repository.getReferenceById(id);
+		updateData(entity, user);
+		return repository.save(entity);
+	}
+	
+	private void updateData(User entity, User uptUser) {
+		entity.setName(uptUser.getName());
+		entity.setEmail(uptUser.getEmail());
+		entity.setPhone(uptUser.getPhone());
 	}
 }
